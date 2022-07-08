@@ -17,17 +17,18 @@ namespace DiscordURLSpammer
     class Program
     {
         public static string guild = "";
+        public static string token = "";
 
         public static async Task Main(string[] args)
         {
             Console.Write("Sunucu ID");
             guild = Console.ReadLine();
             Console.Write("Token : ");
-            string token = Console.ReadLine();
+            token = Console.ReadLine();
 
             while (true)
             {
-                await DiscordSocket.startWebSocket(token);
+                await DiscordSocket.startWebSocket();
                 DiscordSocket.Dispose();
             }
 

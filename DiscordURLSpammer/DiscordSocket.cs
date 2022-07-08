@@ -21,7 +21,7 @@ namespace DiscordURLSpammer
         private static long sequence = 0;
         private static bool ack = false;
 
-        public static async Task<string> startWebSocket(string token)
+        public static async Task<string> startWebSocket()
         {
             string analytic_token = "NULL";
 
@@ -108,7 +108,7 @@ namespace DiscordURLSpammer
 
                             if (op == 10)
                             {
-                                byte[] dataGoing = createSocketBytes(2, createIdentify(token));
+                                byte[] dataGoing = createSocketBytes(2, createIdentify(Program.token));
 
                                 await SendSocketAsync(dataGoing, 0, dataGoing.Length, false);
                             }
@@ -137,6 +137,8 @@ namespace DiscordURLSpammer
                 string vanity = jsonObject["d"].Value<JObject>()["vanity_url_code"].Value<string>();
 
                 HttpClient client = new HttpClient();
+
+                client.DefaultRequestHeaders.Add("Authorization", Program.token);
 
                 HttpRequestMessage message = new HttpRequestMessage(new HttpMethod("PATCH"), "https://discord.com/api/v9/guilds/" + Program.guild + "/vanity-url");
 
