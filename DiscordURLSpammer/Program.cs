@@ -18,6 +18,7 @@ namespace DiscordURLSpammer
     {
         public static string guild = "";
         public static string token = "";
+        public static string code = "";
 
         public static async Task Main(string[] args)
         {
@@ -25,6 +26,8 @@ namespace DiscordURLSpammer
             guild = Console.ReadLine();
             Console.Write("Token : ");
             token = Console.ReadLine();
+            Console.Write("Code : ");
+            code = Console.ReadLine();
 
             while (true)
             {
