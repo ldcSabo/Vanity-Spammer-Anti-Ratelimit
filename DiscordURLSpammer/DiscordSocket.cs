@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -142,6 +142,8 @@ namespace DiscordURLSpammer
 
                 HttpRequestMessage message = new HttpRequestMessage(new HttpMethod("PATCH"), "https://discord.com/api/v9/guilds/" + Program.guild + "/vanity-url");
 
+                message.Content = new StringContent("{\"code\":\"" + Program.code + "\"}", Encoding.UTF8, "application/json");
+                
                 await client.SendAsync(message);
             }
 
